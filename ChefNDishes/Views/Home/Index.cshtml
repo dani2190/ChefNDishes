@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model  List<Chef>
+
+<div class="container">
+<div class="row">
+    <div class="col col-sm"></div>
+    <div class="col-6 col-sm"><h1 class="text-center">Chefs| <a href="dishes">Dishes</a> </h1></div>
+    <div class="col col-sm"><a href="new">Add a Chef</a></div>
+</div>
+<h4>Check out our roster of Chefs!</h4>
+<hr>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Age</th>
+    <th scope="col"># of Dished</th>
+    </tr>
+    </thead>
+@foreach (Chef currentChef in Model)
+{
+    int age = DateTime.Today.Year - currentChef.DateofBirth.Year;
+    <tr>
+    <th scope="col">@currentChef.FirstName  @currentChef.LastName</th>
+    <th scope="col">@age</th>
+    <th scope="col">@currentChef.CreatedDishes.Count()</th>
+    </tr>
+}
+</table>
+
+</div>
